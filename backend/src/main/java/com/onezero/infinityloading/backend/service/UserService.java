@@ -1,6 +1,6 @@
 package com.onezero.infinityloading.backend.service;
 
-import com.onezero.infinityloading.backend.entity.User;
+import com.onezero.infinityloading.backend.domain.User;
 import com.onezero.infinityloading.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

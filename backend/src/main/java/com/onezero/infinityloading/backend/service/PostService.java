@@ -1,6 +1,6 @@
 package com.onezero.infinityloading.backend.service;
 
-import com.onezero.infinityloading.backend.entity.Post;
+import com.onezero.infinityloading.backend.domain.Post;
 import com.onezero.infinityloading.backend.repository.PostRepository;
 
 import jakarta.persistence.EntityNotFoundException;

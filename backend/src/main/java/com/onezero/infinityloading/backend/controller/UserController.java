@@ -1,6 +1,6 @@
 package com.onezero.infinityloading.backend.controller;
 
-import com.onezero.infinityloading.backend.entity.User;
+import com.onezero.infinityloading.backend.domain.User;
 import com.onezero.infinityloading.backend.service.UserService;
 import com.onezero.infinityloading.backend.util.JwtUtil;
 import lombok.RequiredArgsConstructor;

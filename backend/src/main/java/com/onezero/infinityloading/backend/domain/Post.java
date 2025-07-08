@@ -1,4 +1,4 @@
-package com.onezero.infinityloading.backend.entity;
+package com.onezero.infinityloading.backend.domain;
 
 import jakarta.persistence.*;
 //  JPA 관련 주요 어노테이션 사용을 위한 모듈 (Entity, Id, GeneratedValue, Column)

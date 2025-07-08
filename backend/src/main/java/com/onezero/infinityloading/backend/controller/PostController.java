@@ -1,6 +1,6 @@
 package com.onezero.infinityloading.backend.controller;
 
-import com.onezero.infinityloading.backend.entity.Post;
+import com.onezero.infinityloading.backend.domain.Post;
 import com.onezero.infinityloading.backend.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

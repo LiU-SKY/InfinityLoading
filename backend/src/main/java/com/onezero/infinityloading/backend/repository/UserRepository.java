@@ -1,6 +1,6 @@
 package com.onezero.infinityloading.backend.repository;
 
-import com.onezero.infinityloading.backend.entity.User;
+import com.onezero.infinityloading.backend.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

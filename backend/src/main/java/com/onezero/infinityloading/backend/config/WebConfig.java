@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class WebConfig {
 
     @Bean
-    public FilterRegistrationBean<Filter> jwtFilter(JwtFilter jwtFilter)/*JwtFilter를 필터로 등록하는 Spring 방식이며 이 필터가 어떤 경로에 적용될지 지정한다.*/ {
+    public FilterRegistrationBean<Filter> jwtFilter(JwtFilter jwtFilter){
+        /*JwtFilter를 필터로 등록하는 Spring 방식이며 이 필터가 어떤 경로에 적용될지 지정한다.*/
         FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(jwtFilter);
         registrationBean.addUrlPatterns("/posts/*"); // 인증 필터 적용 경로

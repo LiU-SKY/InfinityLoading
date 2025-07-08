@@ -1,4 +1,4 @@
-package com.onezero.infinityloading.backend.entity;
+package com.onezero.infinityloading.backend.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
