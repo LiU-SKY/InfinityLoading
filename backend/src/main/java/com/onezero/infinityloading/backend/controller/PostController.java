@@ -25,7 +25,7 @@ public class PostController {
     @GetMapping
     public List<Post> readAll() { return postService.findAll(); }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Post readOne(@PathVariable Long id) { return postService.findById(id); }
 
     @PutMapping("/{id}")
