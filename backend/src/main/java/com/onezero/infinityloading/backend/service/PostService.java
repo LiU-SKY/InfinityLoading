@@ -23,7 +23,7 @@ public class PostService {
     private final PostRepository postRepository;
 
     public Post save(Post post, String username) {
-        port.setWriter(username);
+        post.setWriter(username);
         return postRepository.save(post);
     }
 
