@@ -7,6 +7,7 @@ import lombok.Getter;
 // 코드 단축을 위한 모듈, 모든 필드에 대해 자동으로 getter 메서드 생성
 
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 // 매개변수 없는 생성자 자동으로 생성
 
 @Entity
@@ -18,12 +19,15 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Setter
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
+    @Setter
     @Column(nullable = false)
     private String writer;
 

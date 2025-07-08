@@ -9,6 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//마크다운
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+
+
 @Service
 @RequiredArgsConstructor
 
@@ -16,7 +22,10 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    public Post save(Post post) { return postRepository.save(post); }
+    public Post save(Post post, String username) {
+        port.setWriter(username);
+        return postRepository.save(post);
+    }
 
     public List<Post> findAll() { return postRepository.findAll(); }
 
@@ -24,13 +33,35 @@ public class PostService {
         return postRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("해당 게시글 없음"));
     }
 
-    public Post update(Long id, Post newPost) {
+    public Post update(Long id, Post newPost, String username) {
         Post post = findById(id);
-        post = new Post(newPost.getTitle(), newPost.getContent(), newPost.getWriter());
+
+        if (!post.getWriter().equals(username)) {
+            throw new IllegalArgumentException("작성자만 수정할 수 있습니다.");
+        }
+
+        post.setTitle(newPost.getTitle());
+        post.setContent(newPost.getContent());
+
+        //get과 차이점 알아내서 어떻게 작성 할 건지 뜯어고치기
+
+        //post = new Post(newPost.getTitle(), newPost.getContent(), newPost.getWriter());
         return postRepository.save(post);
     }
 
-    public void delete(Long id) { postRepository.deleteById(id); }
+    public void delete(Long id, String username) {
+        Post post = findById(id);
+        if (!post.getWriter().equals(username)){
+            throw new IllegalArgumentException("작성자만 삭제할 수 있습니다.");
+        }
+        postRepository.deleteById(id);
+    }
 
+    public String markdownToHtml(String markdown){
+        Parser parser = Parser.builder().build();
+        Node document = parser.parse(markdown);
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        return renderer.render(document);
+    }
 
 }
