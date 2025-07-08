@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component
+//@Component
 public class JwtFilter implements Filter {
 
     private final JwtUtil jwtUtil; //JWT 검증을 위해 JwtUtil 클래스를 사용하고 생성자로 주입받아 필터내부에서 사용 가능 하게 하는 코드

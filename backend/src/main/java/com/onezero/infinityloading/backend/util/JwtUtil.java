@@ -8,7 +8,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET = "mySecretKey";
+    private static final String SECRET = "mySecretKeyisveryveryveryveryveryveryverylong";
     private static final long EXPIRATION_TIME = 86400000; // 1일
 
     public String generateToken(String username) { /*JWT 토큰을 생성하여 반환*/
