@@ -1,0 +1,103 @@
+/* Header.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #333;
+  padding: 10px 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  border-bottom: 2px solid #ff4d4f;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 왼쪽: 로고 & 햄버거 */
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+  font-size: 26px;
+  cursor: pointer;
+  margin-right: 15px;
+  user-select: none;
+  display: none; /* 모바일만 표시 */
+}
+
+/* 메뉴 링크 */
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links span {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-links span:hover {
+  background-color: #ffeaea;
+}
+
+/* 오른쪽: 검색창 + 로그아웃 */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-right input[type="text"] {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.logout-btn {
+  background-color: #ff4d4f;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background-color: #d9363e;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-top: 1px solid #eee;
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links span {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+  }
+}

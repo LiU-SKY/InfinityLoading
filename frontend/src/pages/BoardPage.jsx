@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import PostList from './PostList.jsx';
-import PostDetail from './PostDetail.jsx';
-import PostForm from './PostForm.jsx';
+import PostList from './PostList';
+import PostDetail from './PostDetail';
+import PostForm from './PostForm';
 
 function Board() {
   const [posts, setPosts] = useState([]);
