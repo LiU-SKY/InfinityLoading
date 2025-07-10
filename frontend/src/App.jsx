@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import Header from './Header.jsx';
-import Auth from './Auth';
-import Board from './Board';
-import PostForm from './PostForm.jsx';
-
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Header from './Header';
+import Auth from './pages/LoginPage';
+import Board from './pages/BoardPage';
+import PostForm from './components/PostForm';
 
 function App() {
   const [user, setUser] = useState(null); // 로그인 사용자 상태
