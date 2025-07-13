@@ -19,7 +19,7 @@ function PostDetail({ post, user, onBack, onDelete, onEdit }) {
             <div className="post-content" dangerouslySetInnerHTML={createMarkup()} />
             <div className="post-actions">
                 <button onClick={onBack}>목록으로</button>
-                {/* 작성자일 경우에만 '수정'과 '삭제' 버튼��� 보여줌. */}
+                {/* 작성자일 경우에만 '수정'과 '삭제' 버튼을 보여줌. */}
                 {isAuthor && (
                     <>
                         <button onClick={onEdit}>수정</button>
