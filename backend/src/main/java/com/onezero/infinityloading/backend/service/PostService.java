@@ -1,7 +1,9 @@
 package com.onezero.infinityloading.backend.service;
 
 import com.onezero.infinityloading.backend.domain.Post;
+import com.onezero.infinityloading.backend.domain.User;
 import com.onezero.infinityloading.backend.repository.PostRepository;
+import com.onezero.infinityloading.backend.repository.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ import org.commonmark.renderer.html.HtmlRenderer;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     public Post save(Post post, String username) {
         post.setWriter(username);
@@ -35,9 +38,11 @@ public class PostService {
 
     public Post update(Long id, Post newPost, String username) {
         Post post = findById(id);
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("사용자 없음"));
 
-        if (!post.getWriter().equals(username)) {
-            throw new IllegalArgumentException("작성자만 수정할 수 있습니다.");
+        if (!post.getWriter().equals(username) && !user.getRole().equals("ADMIN")) {
+            throw new IllegalArgumentException("작성자 또는 관리자만 수정할 수 있습니다.");
         }
 
         post.setTitle(newPost.getTitle());
@@ -51,8 +56,10 @@ public class PostService {
 
     public void delete(Long id, String username) {
         Post post = findById(id);
-        if (!post.getWriter().equals(username)){
-            throw new IllegalArgumentException("작성자만 삭제할 수 있습니다.");
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("사용자 없음"));
+        if (!post.getWriter().equals(username) && !user.getRole().equals("ADMIN")){
+            throw new IllegalArgumentException("작성자 또는 관리자만 삭제할 수 있습니다.");
         }
         postRepository.deleteById(id);
     }

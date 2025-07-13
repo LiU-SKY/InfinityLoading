@@ -2,8 +2,6 @@ package com.onezero.infinityloading.backend.config;
 
 import com.onezero.infinityloading.backend.filter.JwtFilter;
 import com.onezero.infinityloading.backend.util.JwtUtil;
-import jakarta.servlet.Filter;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,13 +19,7 @@ public class WebConfig {
         return new JwtFilter(jwtUtil);
     }
 
-
-    @Bean
-    public FilterRegistrationBean<Filter> jwtFilterRegistration(JwtFilter jwtFilter){
-        /*JwtFilter를 필터로 등록하는 Spring 방식이며 이 필터가 어떤 경로에 적용될지 지정한다.*/
-        FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(jwtFilter);
-        registrationBean.addUrlPatterns("/post/*"); // 인증 필터 적용 경로
-        return registrationBean;
-    }
+    // 이전에는 JwtFilter를 FilterRegistrationBean을 통해 서블릿 필터로 등록했으나,
+    // Spring Security의 필터 체인에 JwtFilter를 통합하면서 이중 등록을 방지하기 위해 제거되었습니다.
+    // 이제 JwtFilter는 SecurityConfig에서 관리됩니다.
 }

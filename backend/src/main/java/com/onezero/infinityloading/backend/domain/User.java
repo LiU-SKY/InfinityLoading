@@ -19,8 +19,18 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String role = "USER";
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.role = "USER"; // 생성자에서 기본값 설정
+    }
+
+    public User(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 }

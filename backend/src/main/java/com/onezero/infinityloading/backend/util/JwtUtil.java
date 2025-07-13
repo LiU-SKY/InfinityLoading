@@ -33,9 +33,10 @@ public class JwtUtil {
      * @param username 사용자 이름
      * @return 생성된 JWT 토큰
      */
-    public String generateToken(String username) {
+    public String generateToken(String username, String role) {
         return Jwts.builder()
                 .setSubject(username) // 토큰의 주체로 사용자 이름을 설정
+                .claim("role", role)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // 만료 시간 설정
                 .signWith(key, SignatureAlgorithm.HS512) // HS512 알고리즘과 SecretKey를 사용하여 서명
                 .compact();
@@ -61,4 +62,17 @@ public class JwtUtil {
             throw new IllegalArgumentException("유효하지 않은 토큰입니다.");
         }
     }
+
+    public Claims validateTokenAndGetClaims(String token) {
+        try {
+            return Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (JwtException | IllegalArgumentException e) {
+            throw new IllegalArgumentException("유효하지 않은 토큰입니다.");
+        }
+    }
+
 }
