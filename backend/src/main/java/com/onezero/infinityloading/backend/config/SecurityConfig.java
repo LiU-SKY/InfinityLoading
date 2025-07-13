@@ -1,5 +1,7 @@
 package com.onezero.infinityloading.backend.config;
 
+import com.onezero.infinityloading.backend.filter.JwtFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,15 +10,18 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration // 설정용 클래스임을 명시
+@Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final JwtFilter jwtFilter;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-        // 이 객체를 사용하면 비밀번호를 암호화할 수 있음
     }
 
     @Bean
@@ -25,16 +30,15 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/users/register", "/users/login").permitAll()
-                        // ✅ 인증 없이 허용
                         .anyRequest().authenticated()
-                        // ✅ 나머지는 인증 필요
                 )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)       // ✅ JWT에 적합
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .formLogin(AbstractHttpConfigurer::disable);
-                //리다이렉션 기능 해제
-                // ✅ 기본 로그인 폼 비활성화
+                .formLogin(AbstractHttpConfigurer::disable)
+                // JWT 필터를 UsernamePasswordAuthenticationFilter 이전에 추가하여
+                // 모든 요청에 대해 JWT 토큰을 먼저 검증하도록 합니다.
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
