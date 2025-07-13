@@ -21,10 +21,16 @@ public class UserController {
         return ResponseEntity.ok("회원가입 성공"); /*성공 메시지를 응답*/
     }
 
+    @PostMapping("/register/admin")
+    public ResponseEntity<String> registerAdmin(@RequestParam String username, @RequestParam String password) {
+        userService.registerAdmin(username, password);
+        return ResponseEntity.ok("관리자 회원가입 성공");
+    }
+
     @PostMapping("/login") /*사용자 이름과 비밀번호 검증*/
     public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
         User user = userService.login(username, password);
-        String token = jwtUtil.generateToken(user.getUsername()); /*인증된 사용자에게 JWT 토큰 발급*/
+        String token = jwtUtil.generateToken(user.getUsername(), user.getRole()); /*인증된 사용자에게 JWT 토큰 발급*/
         return ResponseEntity.ok(token); /*클라이언트에게 토큰 응답*/
     }
 }

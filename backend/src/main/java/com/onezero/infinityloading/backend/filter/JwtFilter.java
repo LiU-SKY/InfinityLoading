@@ -1,6 +1,7 @@
 package com.onezero.infinityloading.backend.filter;
 
 import com.onezero.infinityloading.backend.util.JwtUtil;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-//@Component
+@Component
 public class JwtFilter implements Filter {
 
     private final JwtUtil jwtUtil; //JWT 검증을 위해 JwtUtil 클래스를 사용하고 생성자로 주입받아 필터내부에서 사용 가능 하게 하는 코드
@@ -26,8 +27,15 @@ public class JwtFilter implements Filter {
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             try {
-                String username = jwtUtil.validateTokenAndGetUsername(authHeader.substring(7)); //키를 검증하는 로직으로 JwtUtil에서 이 토큰을 검증하고, 사용자 이름을 추출한다.
+                Claims claims = jwtUtil.validateTokenAndGetClaims(authHeader.substring(7));
+                String username = claims.getSubject();
+                String role = claims.get("role", String.class);
+
+                System.out.println("username from token: " + username);
+                System.out.println("role from token: " + role);
+
                 req.setAttribute("username", username);
+                req.setAttribute("role", role);
             } catch (IllegalArgumentException e) {
                 ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "토큰 유효하지 않음");
                 return;
@@ -36,4 +44,5 @@ public class JwtFilter implements Filter {
 
         chain.doFilter(request, response);
     }
+
 }
