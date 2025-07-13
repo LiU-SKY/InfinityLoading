@@ -1,0 +1,26 @@
+.post-list {
+    list-style: none;
+    padding: 0;
+}
+.post-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.post-list-item:hover {
+    background-color: #f9f9f9;
+}
+.post-title {
+    font-weight: bold;
+}
+.post-writer {
+    color: #888;
+}
+.no-posts {
+    text-align: center;
+    padding: 50px;
+    color: #888;
+}
