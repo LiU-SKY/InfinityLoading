@@ -1,4 +1,5 @@
 import React from 'react';
+import '../pages/PostDetailPage.css';
 
 function PostDetail({ post, onBack, onDelete, onEdit }) {
     return (

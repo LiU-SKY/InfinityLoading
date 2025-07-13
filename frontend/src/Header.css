@@ -1,15 +1,55 @@
+/* Header.css */
+
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   color: #333;
+  padding: 15px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-height: 60px;
 }
 
+.nav-left {
+  flex-grow: 1;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 요소들 간의 간격 */
+}
+
+.welcome-text {
+  font-size: 1rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* '글 작성' 버튼 스타일 (App.css 기본 스타일 상속) */
+.write-post-btn {
+  /* App.css의 button 기본 스타일을 따르도록 별도 패딩/폰트 설정 제거 또는 조정 */
+  /* 필요하다면 여기에서만 특정 스타일을 정의 */
+  padding: 10px 18px; /* App.css의 button 기본 패딩과 동일하게 설정 */
+  font-size: 1rem; /* App.css의 button 기본 폰트 크기와 동일하게 설정 */
+}
+
+/* '로그아웃' 버튼 스타일 */
 .logout-btn {
+  /* App.css의 button 기본 스타일을 따르면서 크기를 맞춤 */
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  background-color: #ff4d4f; /* App.css에서 설정된 기본 빨간색 */
+  color: white;
+  padding: 10px 18px; /* '글 작성' 버튼과 동일한 패딩으로 조절 */
+  font-size: 1rem; /* '글 작성' 버튼과 동일한 폰트 크기로 조절 */
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.1s;
 }
 
 .logout-btn:hover {
+  background-color: #d9363e;
+  transform: translateY(-1px);
 }

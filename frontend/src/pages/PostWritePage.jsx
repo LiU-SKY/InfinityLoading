@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PostForm from '../components/PostForm';
+import './PostWritePage.css';
 
 function PostWritePage({ onAdd }) {
     const navigate = useNavigate();
@@ -10,7 +11,11 @@ function PostWritePage({ onAdd }) {
         navigate('/board');
     };
 
-    return <PostForm onSubmit={handleSubmit} />;
+    return (
+        <div className="page-container">
+            <PostForm onSubmit={handleSubmit} />
+        </div>
+    );
 }
 
 export default PostWritePage;

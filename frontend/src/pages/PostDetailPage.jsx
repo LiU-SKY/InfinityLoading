@@ -1,15 +1,31 @@
 import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import PostDetail from '../components/PostDetail';
 
-function PostDetail({ post, onBack, onDelete, onEdit }) {
-  return (
-    <div>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-      <button onClick={onBack}>뒤로가기</button>
-      <button onClick={onEdit}>수정</button>
-      <button onClick={onDelete}>삭제</button>
-    </div>
-  );
+function PostDetailPage({ posts, onDelete }) {
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+    const post = posts.find(p => p.id === Number(id));
+    if (!post) return <div className="page-container">글을 찾을 수 없습니다</div>;
+
+    const handleDelete = () => {
+        if (window.confirm('삭제하시겠습니까?')) {
+            onDelete(post.id);
+            navigate('/board');
+        }
+    };
+
+    return (
+        <div className="page-container">
+            <PostDetail
+                post={post}
+                onBack={() => navigate('/board')}
+                onDelete={handleDelete}
+                onEdit={() => navigate(`/edit/${post.id}`)}
+            />
+        </div>
+    );
 }
 
-export default PostDetail;
+export default PostDetailPage;
