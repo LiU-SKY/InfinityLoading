@@ -1,97 +1,57 @@
-// LoginPage.jsx
-
 import React, { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
+import apiClient from '../api/axios';
+import './LoginPage.css';
 
-import './LoginPage.css'; // LoginPage 전용 CSS
-
-
-
+// 로그인 페이지 컴포넌트.
 function LoginPage({ onLogin }) {
-
     const [username, setUsername] = useState('');
-
-    const [password, setPassword] = useState(''); // 비밀번호 상태 추가
-
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-
-
-    const handleLogin = () => {
-
+    // 로그인 버튼 클릭 시 실행되는 함수.
+    const handleLogin = async () => {
         if (!username.trim() || !password.trim()) {
-
             return alert('이름과 비밀번호를 모두 입력하세요');
-
         }
-
-// 실제 로그인 로직(예: 서버 통신, 비밀번호 검증)은 여기에 추가
-
-// 현재는 간단히 사용자 이름으로 로그인 처리
-
-        onLogin(username.trim()); // 부모 컴포넌트(App.js)의 user 상태 업데이트
-
-        navigate('/board'); // 게시판 페이지로 이동
-
+        try {
+            // 서버에 로그인 요청을 보냄.
+            const response = await apiClient.post('/users/login', { username, password });
+            // 로그인 성공 시, 부모 컴포넌트(App.jsx)의 onLogin 함수를 호출하여 토큰 전달.
+            onLogin(response.data);
+            // 게시판 페이지로 이동.
+            navigate('/board');
+        } catch (error) {
+            console.error('Login failed:', error);
+            alert('로그인에 실패했습니다. 아이디 또는 비밀번호를 확인해주세요.');
+        }
     };
 
-
-
     return (
-
-        <div className="page-container"> {/* App.css의 .page-container 스타일 적용 */}
-
-            <div className="common-box"> {/* LoginPage.css의 .login-box 스타일 적용 */}
-
-                <h2>로그인</h2> {/* "로그인 / 회원가입" 문구에서 "로그인"으로 변경 */}
-
+        <div className="page-container">
+            <div className="common-box">
+                <h2>로그인</h2>
                 <input
-
                     type="text"
-
                     placeholder="사용자 이름"
-
                     value={username}
-
                     onChange={(e) => setUsername(e.target.value)}
-
                 />
-
                 <input
-
-                    type="password" // type을 password로 설정하여 입력 시 문자를 숨김
-
+                    type="password"
                     placeholder="비밀번호"
-
                     value={password}
-
                     onChange={(e) => setPassword(e.target.value)}
-
                 />
-
-                {/* 버튼들을 가로로 나란히 배치하기 위한 flex 컨테이너 */}
-
                 <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-
-                    <button onClick={handleLogin} style={{ flex: 1 }}>로그인</button> {/* 버튼 텍스트 변경 및 flex:1로 공간 분배 */}
-
+                    <button onClick={handleLogin} style={{ flex: 1 }}>로그인</button>
                     <button onClick={() => navigate('/signup')} style={{ flex: 1 }}>
-
                         회원가입
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
-
     );
-
 }
-
-
 
 export default LoginPage;
