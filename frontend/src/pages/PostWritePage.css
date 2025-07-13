@@ -1,31 +1,15 @@
 .write-container {
-
     max-width: 600px;
-
     margin: 80px auto;
-
     padding: 30px 25px;
-
     background-color: #fff;
-
     border-radius: 10px;
-
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-
     font-family: 'Noto Sans KR', sans-serif;
-
 }
-
-
-
 .write-container h2 {
-
     font-size: 24px;
-
     color: #ff4d4f;
-
     margin-bottom: 20px;
-
     text-align: center;
-
 }

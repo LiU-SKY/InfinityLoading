@@ -1,223 +1,98 @@
 /* App.css */
-
-
-
 /* Global Reset and Base Styles */
-
 * {
-
   box-sizing: border-box;
-
 }
-
-
-
 html, body {
-
   margin: 0;
-
   padding: 0;
-
   height: 100%;
-
   font-family: 'Noto Sans KR', sans-serif;
-
   color: #333;
-
 }
-
-
-
 body {
-
   background-color: #f5f5f5; /* 헤더와 구분되는 연한 회색 배경색 */
-
   display: flex;
-
   flex-direction: column;
-
   min-height: 100vh;
-
 }
-
-
-
 #root {
-
   height: 100%;
-
   display: flex;
-
   flex-direction: column;
-
   flex: 1;
-
 }
-
-
-
 a {
-
   text-decoration: none;
-
   color: inherit;
-
 }
-
-
-
 button {
-
   font-family: 'Noto Sans KR', sans-serif;
-
   cursor: pointer;
-
   border: none;
-
   border-radius: 6px;
-
   padding: 10px 18px;
-
   font-size: 1rem;
-
   font-weight: bold;
-
   background-color: #ff4d4f !important;
-
   color: white;
-
   transition: background-color 0.3s ease, transform 0.1s ease;
-
 }
-
-
-
 button:hover {
-
   background-color: #d9363e !important;
-
   transform: translateY(-1px);
-
 }
-
-
-
 button:active {
-
   transform: translateY(0);
-
 }
-
-
-
 button:disabled {
-
   background-color: #ccc;
-
   cursor: not-allowed;
-
   transform: none;
-
 }
-
-
-
 input[type="text"],
-
 input[type="password"],
-
 textarea {
-
   font-family: 'Noto Sans KR', sans-serif;
-
   box-sizing: border-box;
-
   width: 100%;
-
   padding: 12px 14px;
-
   font-size: 1rem;
-
   border: 1px solid #e0e0e0;
-
   border-radius: 6px;
-
   outline: none;
-
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
 }
-
-
-
 input[type="text"]:focus,
-
 input[type="password"]:focus,
-
 textarea:focus {
-
   border-color: #ff4d4f;
-
   box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.2);
-
 }
-
-
-
 /* 모든 페이지의 주요 콘텐츠를 감싸는 .page-container 스타일 */
-
 .page-container {
-
   flex: 1;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center; /* 내부 콘텐츠를 수평 중앙 정렬 */
-
   justify-content: flex-start; /* 콘텐츠를 상단으로 정렬 (필요에 따라 center로 변경) */
-
   padding: 20px; /* 전체 페이지 컨테이너의 패딩 */
-
 }
-
-
-
 /* 로그인/회원가입/글쓰기/수정 등 공통 박스 스타일 */
-
 .common-box {
-
   background-color: #fff;
-
   border-radius: 12px;
-
   padding: 40px;
-
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-
   width: 100%;
-
   max-width: 900px;
-
   min-height: 70vh;
-
   height: auto;
-
   text-align: center;
-
   margin: 40px auto;
-
 }
-
-
-
 .common-box h2 {
-
   font-size: 28px;
-
   color: #ff4d4f;
-
   margin-bottom: 30px;
-
 }
