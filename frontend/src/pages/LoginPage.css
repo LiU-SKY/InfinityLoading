@@ -1,28 +1,55 @@
 .login-box {
+
     background-color: #fff;
+
     border-radius: 12px;
+
     padding: 40px;
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
     width: 100%;
+
     max-width: 400px;
+
     text-align: center;
+
 }
+
+
 
 .login-box input {
+
     width: 100%;
+
     padding: 10px;
+
     margin-bottom: 12px;
+
     border: 1px solid #ccc;
+
     border-radius: 6px;
+
 }
+
+
 
 .login-box button {
+
     width: 100%;
+
     background-color: #ff4d4f;
+
     color: white;
+
     margin-top: 10px;
+
 }
 
+
+
 .login-box button:hover {
+
     background-color: #d9363e;
+
 }

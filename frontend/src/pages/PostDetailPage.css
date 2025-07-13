@@ -1,48 +1,77 @@
 /* PostDetailPage.css */
+
 .detail-container {
-    background-color: #fff; /* 흰색 배경 */
-    border-radius: 12px; /* 둥근 모서리 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* 그림자 */
+
+    background-color: #fff;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
     font-family: 'Noto Sans KR', sans-serif;
 
-    /* 너비와 높이를 BoardPage.css와 동일하게 설정 */
-    width: 90vw;
-    max-width: 900px;
-    min-height: 70vh;
-    height: auto;
 
-    margin: 40px auto;
+
+    /* 이전의 width, max-width, min-height, height, margin 관련 속성은 모두 제거합니다. */
+
+    /* 이들은 이제 App.css의 .common-box에서 정의됩니다. */
+
+
+
     padding: 30px;
+
     display: flex;
+
     flex-direction: column;
-    text-align: left; /* 내용이므로 왼쪽 정렬 */
+
+    text-align: left;
+
 }
+
+
 
 .detail-container h2 {
+
     font-size: 28px;
+
     color: #ff4d4f;
+
     margin-bottom: 20px;
+
     padding-bottom: 10px;
-    border-bottom: 2px solid #f0f0f0; /* 제목 아래 구분선 */
+
+    border-bottom: 2px solid #f0f0f0;
+
 }
+
+
 
 .detail-container p {
+
     font-size: 1.05rem;
+
     line-height: 1.8;
+
     color: #444;
+
     white-space: pre-wrap;
+
     margin-top: 25px;
-    flex-grow: 1; /* 내용이 남은 공간을 차지하도록 */
+
+    flex-grow: 1;
+
 }
+
+
 
 .detail-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 30px;
-}
 
-/* detail-buttons 내부의 button은 App.css의 button 기본 스타일을 따릅니다. */
-.detail-buttons button {
-    /* App.css의 button 스타일을 따릅니다. */
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
 }
