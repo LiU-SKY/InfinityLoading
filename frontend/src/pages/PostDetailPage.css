@@ -1,29 +1,38 @@
 /* PostDetailPage.css */
 .detail-container {
-    /* App.css의 .page-container 스타일과 .common-box 스타일을 활용합니다. */
-    /* 혹은 이전에 정의했던 스타일 중 App.css와 중복되지 않는 부분만 유지합니다. */
-    max-width: 700px; /* 상세 페이지는 좀 더 넓게 */
-    margin: 80px auto;
-    padding: 30px 25px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    background-color: #fff; /* 흰색 배경 */
+    border-radius: 12px; /* 둥근 모서리 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* 그림자 */
     font-family: 'Noto Sans KR', sans-serif;
+
+    /* 너비와 높이를 BoardPage.css와 동일하게 설정 */
+    width: 90vw;
+    max-width: 900px;
+    min-height: 70vh;
+    height: auto;
+
+    margin: 40px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
     text-align: left; /* 내용이므로 왼쪽 정렬 */
 }
 
 .detail-container h2 {
-    font-size: 28px; /* 제목 크기 키움 */
+    font-size: 28px;
     color: #ff4d4f;
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0; /* 제목 아래 구분선 */
 }
 
 .detail-container p {
-    font-size: 1.05rem; /* 글 내용 폰트 크기 조정 */
-    line-height: 1.8; /* 줄 간격 넓게 */
+    font-size: 1.05rem;
+    line-height: 1.8;
     color: #444;
-    white-space: pre-wrap; /* 줄바꿈 반영 */
-    margin-top: 25px; /* 제목과 내용 사이 간격 */
+    white-space: pre-wrap;
+    margin-top: 25px;
+    flex-grow: 1; /* 내용이 남은 공간을 차지하도록 */
 }
 
 .detail-buttons {
@@ -34,7 +43,6 @@
 }
 
 /* detail-buttons 내부의 button은 App.css의 button 기본 스타일을 따릅니다. */
-/* 필요하다면 여기에 추가 스타일을 정의 */
 .detail-buttons button {
     /* App.css의 button 스타일을 따릅니다. */
 }
