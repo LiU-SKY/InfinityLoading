@@ -1,58 +1,141 @@
-/* BoardPage.css */
+/* BoardPage.css - 강화된 디자인 */
 
+/* 게시판 전체 컨테이너 */
 .board-container {
-    background-color: #fff; /* 흰색 배경 유지 */
+    background-color: #fff; /* 흰색 배경 */
     border-radius: 12px; /* 둥근 모서리 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* .write-box와 유사한 그림자 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
     font-family: 'Noto Sans KR', sans-serif;
-
-    /* 여기를 수정하여 너비를 조절합니다. */
-    width: 100%; /* 부모 요소의 전체 너비를 사용 */
-    max-width: 900px; /* 너무 넓어지지 않도록 최대 너비 설정 (조절 가능) */
-    /* 현재 App.css의 .common-box에서 정의된다고 되어 있으나,
-       명시적으로 BoardPage에서 제어하기 위해 추가하거나 수정합니다. */
-    margin: 0 auto; /* 가운데 정렬 */
-
-
+    width: 100%; /* 부모 요소의 전체 너비 사용 */
+    max-width: 1200px; /* 최대 너비 설정 (조절 가능) */
+    margin: 40px auto; /* 중앙 정렬 및 상하 여백 */
     padding: 30px; /* 내부 패딩 */
     display: flex;
     flex-direction: column;
     color: #333; /* 기본 텍스트 색상 */
 }
 
-/* 제목 스타일 */
-.board-container h2 {
+/* 게시판 제목 영역 */
+.board-header {
+    display: flex;
+    justify-content: space-between; /* 제목과 버튼을 양 끝으로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ff4d4f; /* 빨간색 밑줄 */
+}
+
+.board-header h2 {
     font-size: 28px;
     color: #ff4d4f; /* 빨간색 제목 */
-    margin-bottom: 25px;
-    text-align: left; /* 제목은 왼쪽 정렬 */
-    padding-bottom: 10px;
-    border-bottom: 2px solid #ff4d4f; /* 제목 아래 빨간색 밑줄 */
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+}
+
+/* '글 작성' 버튼 스타일 (BoardPage 상단에 위치) */
+.board-header .write-post-button {
+    background-color: #ff4d4f; /* 빨간색 배경 */
+    color: white; /* 흰색 텍스트 */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.board-header .write-post-button:hover {
+    background-color: #d9363e; /* 호버 시 더 어두운 빨간색 */
+    transform: translateY(-1px);
 }
 
 /* 글 목록 전체 스타일 */
-.board-container ul {
+.board-list { /* ul 대신 .board-list 클래스 사용 */
     list-style: none; /* 불릿 제거 */
     padding: 0;
     margin: 0;
 }
 
 /* 개별 글 항목 스타일 */
-.board-container li {
-    padding: 15px 0;
-    border-bottom: 1px solid #eee; /* 기존과 동일한 회색 하단 선 */
+.board-list-item { /* li 대신 .board-list-item 클래스 사용 */
+    display: flex; /* Flexbox로 내부 요소 정렬 */
+    justify-content: space-between; /* 제목과 메타 정보를 양 끝으로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 18px 15px; /* 내부 패딩 */
+    border-bottom: 1px solid #eee; /* 하단 구분선 */
     font-size: 1.1rem;
-    color: #333; /* 글 목록 텍스트 색상 */
+    color: #333;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
-.board-container li:last-child {
+.board-list-item:last-child {
     border-bottom: none; /* 마지막 항목은 하단 선 없음 */
 }
 
-.board-container li:hover {
+.board-list-item:hover {
     background-color: #fcebeb; /* 호버 시 아주 연한 빨간색 배경 */
     transform: translateX(5px); /* 호버 시 약간 이동 */
     color: #ff4d4f; /* 호버 시 텍스트 빨간색으로 변경 */
+}
+
+/* 글 제목 스타일 */
+.board-list-item .post-title {
+    flex-grow: 1; /* 제목이 가능한 공간을 모두 차지하도록 */
+    font-weight: bold; /* 제목을 더 굵게 */
+    color: #333; /* 기본 제목 색상 */
+    margin-right: 20px; /* 메타 정보와의 간격 */
+    white-space: nowrap; /* 제목이 길어도 한 줄에 표시 */
+    overflow: hidden; /* 넘치는 부분 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분 ...으로 표시 */
+}
+
+.board-list-item:hover .post-title {
+    color: #ff4d4f; /* 호버 시 제목 색상 변경 */
+}
+
+/* 글 메타 정보 (작성자, 날짜, 조회수 등) 스타일 */
+.board-list-item .post-meta {
+    font-size: 0.9rem; /* 메타 정보는 작게 */
+    color: #888; /* 연한 회색으로 표시 */
+    display: flex;
+    gap: 15px; /* 각 메타 정보 항목 사이 간격 */
+    min-width: 250px; /* 메타 정보 영역 최소 너비 확보 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center; /* 페이지네이션 중앙 정렬 */
+    align-items: center;
+    margin-top: 30px; /* 게시글 목록과의 간격 */
+    gap: 8px; /* 페이지 번호 사이 간격 */
+}
+
+.pagination button {
+    background-color: #f0f0f0; /* 기본 버튼 배경색 */
+    color: #555; /* 기본 버튼 텍스트 색상 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination button:hover {
+    background-color: #e0e0e0;
+}
+
+.pagination button.active {
+    background-color: #ff4d4f; /* 활성 페이지는 빨간색 */
+    color: white;
+    border-color: #ff4d4f;
+    font-weight: bold;
+}
+
+.pagination button.active:hover {
+    background-color: #d9363e;
 }
