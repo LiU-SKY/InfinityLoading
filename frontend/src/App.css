@@ -1,223 +1,112 @@
 /* App.css */
 
-
-
 /* Global Reset and Base Styles */
-
 * {
-
   box-sizing: border-box;
-
 }
-
-
 
 html, body {
-
   margin: 0;
-
   padding: 0;
-
   height: 100%;
-
   font-family: 'Noto Sans KR', sans-serif;
-
   color: #333;
-
 }
-
-
 
 body {
-
-  background-color: #f5f5f5; /* 헤더와 구분되는 연한 회색 배경색 */
-
+  background-color: #fefefe; /* 깔끔한 거의 흰색 배경 */
   display: flex;
-
   flex-direction: column;
-
-  min-height: 100vh;
-
+  min-height: 100vh; /* 뷰포트 전체 높이를 차지하도록 */
 }
-
-
 
 #root {
-
   height: 100%;
-
   display: flex;
-
   flex-direction: column;
-
-  flex: 1;
-
+  flex: 1; /* 남은 공간을 모두 차지하도록 */
 }
-
-
 
 a {
-
   text-decoration: none;
-
   color: inherit;
-
 }
 
-
-
+/* 모든 버튼의 기본 스타일 통일 */
 button {
-
   font-family: 'Noto Sans KR', sans-serif;
-
   cursor: pointer;
-
   border: none;
-
-  border-radius: 6px;
-
-  padding: 10px 18px;
-
+  border-radius: 6px; /* 조금 더 둥근 모서리 */
+  padding: 10px 18px; /* 패딩 통일 */
   font-size: 1rem;
-
-  font-weight: bold;
-
-  background-color: #ff4d4f !important;
-
+  font-weight: bold; /* 글씨 굵게 */
+  background-color: #ff4d4f !important; /* !important를 사용하여 다른 규칙보다 우선순위를 높임 */
   color: white;
 
   transition: background-color 0.3s ease, transform 0.1s ease;
-
 }
-
-
 
 button:hover {
-
-  background-color: #d9363e !important;
-
-  transform: translateY(-1px);
-
+  background-color: #d9363e; /* 호버 시 어두운 빨간색 */
+  transform: translateY(-1px); /* 살짝 떠오르는 효과 */
 }
-
-
 
 button:active {
-
-  transform: translateY(0);
-
+  transform: translateY(0); /* 클릭 시 다시 원래대로 */
 }
-
-
 
 button:disabled {
-
   background-color: #ccc;
-
   cursor: not-allowed;
-
   transform: none;
-
 }
 
-
-
+/* 모든 input, textarea의 기본 스타일 통일 */
 input[type="text"],
-
 input[type="password"],
-
 textarea {
-
   font-family: 'Noto Sans KR', sans-serif;
-
   box-sizing: border-box;
-
   width: 100%;
-
   padding: 12px 14px;
-
   font-size: 1rem;
-
-  border: 1px solid #e0e0e0;
-
-  border-radius: 6px;
-
+  border: 1px solid #e0e0e0; /* 옅은 회색 테두리 */
+  border-radius: 6px; /* 둥근 모서리 */
   outline: none;
-
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
 }
-
-
 
 input[type="text"]:focus,
-
 input[type="password"]:focus,
-
 textarea:focus {
-
-  border-color: #ff4d4f;
-
-  box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.2);
-
+  border-color: #ff4d4f; /* 포커스 시 빨간색 테두리 */
+  box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.2); /* 은은한 그림자 효과 */
 }
 
-
-
-/* 모든 페이지의 주요 콘텐츠를 감싸는 .page-container 스타일 */
-
+/* 공통 컨테이너 스타일 */
 .page-container {
-
   flex: 1;
-
   display: flex;
-
   flex-direction: column;
-
-  align-items: center; /* 내부 콘텐츠를 수평 중앙 정렬 */
-
-  justify-content: flex-start; /* 콘텐츠를 상단으로 정렬 (필요에 따라 center로 변경) */
-
-  padding: 20px; /* 전체 페이지 컨테이너의 패딩 */
-
+  align-items: center;
+  justify-content: center; /* 페이지 콘텐츠를 수직/수평 중앙에 배치 */
+  padding: 40px 20px;
 }
 
-
-
-/* 로그인/회원가입/글쓰기/수정 등 공통 박스 스타일 */
-
+/* 공통 박스 스타일 (로그인/회원가입/글쓰기/상세보기 등의 내부 박스) */
 .common-box {
-
   background-color: #fff;
-
-  border-radius: 12px;
-
-  padding: 40px;
-
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-
+  border-radius: 12px; /* 좀 더 둥근 모서리 */
+  padding: 40px; /* 내부 패딩 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* 깔끔하고 선명한 그림자 */
   width: 100%;
-
-  max-width: 900px;
-
-  min-height: 70vh;
-
-  height: auto;
-
+  max-width: 450px; /* 박스 최대 너비 통일 */
   text-align: center;
-
-  margin: 40px auto;
-
 }
-
-
 
 .common-box h2 {
-
-  font-size: 28px;
-
+  font-size: 28px; /* 제목 크기 키움 */
   color: #ff4d4f;
-
-  margin-bottom: 30px;
-
+  margin-bottom: 30px; /* 제목 아래 마진 */
 }
