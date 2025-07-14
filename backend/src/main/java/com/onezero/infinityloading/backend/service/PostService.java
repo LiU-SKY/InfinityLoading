@@ -64,6 +64,17 @@ public class PostService {
         postRepository.deleteById(id);
     }
 
+
+    public Post getPost(Long id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("게시글이 존재하지 않습니다."));
+
+        post.incrementViews();
+        postRepository.save(post);
+
+        return post;
+    }
+
     public String markdownToHtml(String markdown){
         Parser parser = Parser.builder().build();
         Node document = parser.parse(markdown);

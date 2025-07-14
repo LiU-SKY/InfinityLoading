@@ -31,6 +31,13 @@ public class Post {
     @Column(nullable = false)
     private String writer;
 
+    private int views = 0;
+
+    public void incrementViews() {
+        this.views++;
+    }
+
     public Post(String title, String content, String writer) {
     }
+
 }

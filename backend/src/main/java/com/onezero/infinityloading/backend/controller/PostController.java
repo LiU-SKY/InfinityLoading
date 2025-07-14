@@ -28,7 +28,7 @@ public class PostController {
     public List<Post> readAll() { return postService.findAll(); }
 
     @GetMapping("/{id}")
-    public Post readOne(@PathVariable Long id) { return postService.findById(id); }
+    public Post readOne(@PathVariable Long id) { return postService.getPost(id); }
 
     @PutMapping("/{id}")
     public Post update(@PathVariable Long id, @RequestBody Post post, HttpServletRequest request) {
