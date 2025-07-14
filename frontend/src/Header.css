@@ -1,6 +1,6 @@
 /* Header.css */
 .header {
-  width: 100%; /* 브라우저 양 끝 빈공간 없이 100%로 확장 */
+  width: 100vw; /* 브라우저 양 끝 빈공간 없이 100%로 확장 */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -9,6 +9,7 @@
   background-color: #fff; /* 헤더 배경색은 흰색 */
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   min-height: 60px;
+  max-height: 60px;
 }
 .nav-left {
   flex-grow: 1;

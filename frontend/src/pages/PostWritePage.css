@@ -13,3 +13,22 @@
     margin-bottom: 20px;
     text-align: center;
 }
+
+.write-box{
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    width:80vw;
+    height:85vh;
+    margin-bottom: 20px;
+}
+
+.write-box h2{
+    font-size: 2em;
+    color: #ff4d4f;
+    text-align: center;
+    margin-top: 0px;
+}
+
+

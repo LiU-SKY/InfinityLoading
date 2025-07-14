@@ -43,7 +43,7 @@ function LoginPage({ onLogin }) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                <div className="button-box">
                     <button onClick={handleLogin} style={{ flex: 1 }}>로그인</button>
                     <button onClick={() => navigate('/signup')} style={{ flex: 1 }}>
                         회원가입

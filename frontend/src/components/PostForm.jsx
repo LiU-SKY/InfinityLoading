@@ -36,6 +36,7 @@ function PostForm({ post, onSubmit }) {
                 onChange={setContent}
                 height={400}
             />
+
             <div className="post-form-actions">
                 {/* 수정 모드 여부에 따라 버튼 텍스트를 다르게 표시. */}
                 <button onClick={handleSubmit}>{post ? '수정하기' : '작성하기'}</button>

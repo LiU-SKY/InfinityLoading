@@ -21,7 +21,7 @@ function App() {
     const [loading, setLoading] = useState(true);
 
     // 서버에서 모든 게시글을 가져오는 함수.
-    // useCallback을 사용해 이 함수의 참조가 불��요하게 변경되는 것을 방지.
+    // useCallback을 사용해 이 함수의 참조가 불필요하게 변경되는 것을 방지.
     const fetchPosts = useCallback(async () => {
         try {
             const response = await apiClient.get('/post');

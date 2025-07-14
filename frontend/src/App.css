@@ -9,6 +9,7 @@ html, body {
   height: 100%;
   font-family: 'Noto Sans KR', sans-serif;
   color: #333;
+  font-size: 16px;
 }
 body {
   background-color: #f5f5f5; /* 헤더와 구분되는 연한 회색 배경색 */
@@ -51,8 +52,8 @@ button:disabled {
   transform: none;
 }
 input[type="text"],
-input[type="password"],
-textarea {
+input[type="password"]{
+  margin-top: 10px;
   font-family: 'Noto Sans KR', sans-serif;
   box-sizing: border-box;
   width: 100%;
@@ -84,15 +85,22 @@ textarea:focus {
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  max-width: 900px;
+  width: 50vw;
+  max-width: 500px;
   min-height: 70vh;
   height: auto;
   text-align: center;
+  font-size:20px;
   margin: 40px auto;
 }
 .common-box h2 {
-  font-size: 28px;
+  font-size: 2em;
   color: #ff4d4f;
   margin-bottom: 30px;
+}
+
+.button-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }

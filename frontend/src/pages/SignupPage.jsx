@@ -2,12 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../api/axios';
 import './SignupPage.css';
+import '../App.css';
+
 
 // 회원가입 페이지 컴포넌트.
 function SignupPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [passchek, setPasschek] = useState('');
     const navigate = useNavigate();
+
+    const isMatch = password === passchek;
+    const textStyle = {
+        color: isMatch ? 'green' : 'red',
+        borderColor: password !== "" && isMatch ? 'green' : 'red',
+    };
 
     // '가입하기' 버튼 클릭 시 실행되는 함수.
     const handleSignup = async () => {
@@ -40,9 +49,21 @@ function SignupPage() {
                     type="password"
                     placeholder="비밀번호"
                     value={password}
+                    style={textStyle}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button onClick={handleSignup}>가입하기</button>
+                <input
+                    type="password"
+                    placeholder="비밀번호 재입력"
+                    value={passchek}
+                    onChange={(e) => setPasschek(e.target.value)}
+                    style={textStyle}
+                />
+                <div className = "button-box">
+                    <button onClick={handleSignup} style={{ flex: 1 }}>가입하기</button>
+                    <button onClick={() => navigate('/login')} style={{ flex: 1 }}>로그인으로</button>
+                </div>
+
             </div>
         </div>
     );

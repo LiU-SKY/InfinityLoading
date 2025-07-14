@@ -3,16 +3,18 @@
     flex-direction: column;
     gap: 15px;
 }
-.post-form input[type="text"],
+.post-form-container input[type="text"],
 .post-form textarea {
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
     width: 100%;
     padding: 12px 14px;
     font-size: 1rem;
-    border: 1.5px solid #ddd;
+    border: 1px solid #e0e0e0;
     border-radius: 6px;
     outline: none;
-    transition: border-color 0.3s;
-    font-family: 'Noto Sans KR', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
 }
 .post-form input[type="text"]:focus,
 .post-form textarea:focus {
@@ -22,10 +24,13 @@
     resize: vertical;
     min-height: 150px;
 }
-.post-form .form-actions {
+
+.post-form-actions {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     margin-top: 20px;
+    position: relative;
+    bottom: 0;
 }
 .post-form button {
     background-color: #ff4d4f;
