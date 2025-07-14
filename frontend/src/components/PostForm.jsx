@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MDEditor from '@uiw/react-md-editor';
 import './PostForm.css';
 
 // 게시글 작성 및 수정을 위한 폼 컴포넌트.
@@ -17,12 +18,12 @@ function PostForm({ post, onSubmit }) {
         // id는 서버에서 자동 생성되므로 여기서는 보내지 않음.
         onSubmit({
             title: title.trim(),
-            content: content.trim(),
+            content: content, // trim() 제거, 마크다운 공백 보존
         });
     };
 
     return (
-        <div className="post-form-container">
+        <div className="post-form-container" data-color-mode="light">
             <input
                 type="text"
                 placeholder="제목"
@@ -30,12 +31,10 @@ function PostForm({ post, onSubmit }) {
                 onChange={e => setTitle(e.target.value)}
                 className="post-form-input"
             />
-            <textarea
-                placeholder="내용 (마크다운 지원)"
+            <MDEditor
                 value={content}
-                onChange={e => setContent(e.target.value)}
-                rows={10}
-                className="post-form-textarea"
+                onChange={setContent}
+                height={400}
             />
             <div className="post-form-actions">
                 {/* 수정 모드 여부에 따라 버튼 텍스트를 다르게 표시. */}
