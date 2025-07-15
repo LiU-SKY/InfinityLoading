@@ -7,17 +7,20 @@ function PostDetail({ post, user, onBack, onDelete, onEdit }) {
     const canModify = user && (user.username === post.writer || user.role === 'ADMIN');
 
     return(
-        <div className="" style={{display:"flex", flexDirection:"column", height:"100%"}}>
+        <div className="post-detail-container">
             <h2 id={"title"}>{post.title}</h2>
-            <p className="post-writer" style={{alignSelf:"flex-end"}}>작성자: {post.writer}</p>
+            <div className="post-meta-detail">
+                <span className="post-writer">작성자: {post.writer}</span>
+                <span className="post-views">조회수: {post.views}</span>
+            </div>
             {/* Tiptap 콘텐츠(HTML)를 렌더링 */}
             <div
                 className="post-content ProseMirror"
                 dangerouslySetInnerHTML={{ __html: post.content }}
             />
-            <div className="post-actions"  style={{alignSelf: "flex-end", marginTop: "auto", gap:"10px", display:"flex"}}>
+            <div className="post-actions">
                 <button onClick={onBack}>목록으로</button>
-                {/* 수정/삭제 권한이 있을 경우에만 버튼을 보여줌. */}
+                {/* 수정/삭제 권한이 있을 경우에만 버튼을 ��여줌. */}
                 {canModify && (
                     <>
                         <button onClick={onEdit}>수정</button>
