@@ -42,7 +42,9 @@ public class PostService {
 
     @Transactional
     public Post update(Long id, Post newPost, String username) {
-        Post post = findById(id);
+        // findById() 대신 repository를 직접 호출하여 조회수 증가를 방지합니다.
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("해당 게시글 없음"));
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("사용자 없음"));
 
@@ -52,21 +54,20 @@ public class PostService {
 
         post.setTitle(newPost.getTitle());
         post.setContent(newPost.getContent());
-
-        //get과 차이점 알아내서 어떻게 작성 할 건지 뜯어고치기
-
-        //post = new Post(newPost.getTitle(), newPost.getContent(), newPost.getWriter());
-        return postRepository.save(post);
+        return post; // @Transactional에 의해 변경 감지(dirty checking)되어 자동 저장됩니다.
     }
 
+    @Transactional
     public void delete(Long id, String username) {
-        Post post = findById(id);
+        // findById() 대신 repository를 직접 호출하여 조회수 증가를 방지합니다.
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("해당 게시글 없음"));
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("사용자 없음"));
         if (!post.getWriter().equals(username) && !user.getRole().equals("ADMIN")){
             throw new IllegalArgumentException("작성자 또는 관리자만 삭제할 수 있습니다.");
         }
-        postRepository.deleteById(id);
+        postRepository.delete(post);
     }
 
     public String markdownToHtml(String markdown){
