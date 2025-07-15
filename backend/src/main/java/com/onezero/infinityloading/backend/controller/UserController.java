@@ -23,12 +23,6 @@ public class UserController {
         return ResponseEntity.ok("회원가입 성공"); /*성공 메시지를 응답*/
     }
 
-    @PostMapping("/register/admin")
-    public ResponseEntity<String> registerAdmin(@RequestBody Map<String, String> payload) {
-        userService.registerAdmin(payload.get("username"), payload.get("password"));
-        return ResponseEntity.ok("관리자 회원가입 성공");
-    }
-
     @PostMapping("/login") /*사용자 이름과 비밀번호 검증*/
     public ResponseEntity<String> login(@RequestBody Map<String, String> payload) {
         System.out.println("[UserController] /login 요청 수신: username=" + payload.get("username"));

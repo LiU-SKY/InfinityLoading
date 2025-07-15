@@ -13,12 +13,6 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public User registerAdmin(String username, String rawPassword) {
-        String encodedPassword = passwordEncoder.encode(rawPassword);
-        User user = new User(username, encodedPassword, "ADMIN");
-        return userRepository.save(user);
-    }
-
     public User register(String username, String rawPassword) { /*회원가입을 담당하는 로직*/
         String encodedPassword = passwordEncoder.encode(rawPassword); /*사용자가 입력한 평문 비밀번호*/
         User user = new User(username, encodedPassword);/* 평문 비밀번호를 복호화 불가능한 암호화 처리*/
