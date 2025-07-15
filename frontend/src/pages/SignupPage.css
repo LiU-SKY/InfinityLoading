@@ -1,0 +1,13 @@
+.password-input {
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.password-input.match {
+    border-color: green;
+    color: green;
+}
+
+.password-input.mismatch {
+    border-color: red;
+    color: red;
+}

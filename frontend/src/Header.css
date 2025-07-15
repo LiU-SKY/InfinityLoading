@@ -43,3 +43,10 @@
   background-color: #d9363e;
   transform: translateY(-1px);
 }
+
+.board-title {
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ff4d4f;
+}
