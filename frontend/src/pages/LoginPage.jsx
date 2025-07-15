@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../api/axios';
-import './LoginPage.css';
 
 // 로그인 페이지 컴포넌트.
 function LoginPage({ onLogin }) {

@@ -13,7 +13,9 @@ function Header({ user, onLogout }) {
         <header className="header">
             <div className="nav-left">
                 {/* 로고나 다른 메뉴 등을 위한 왼쪽 공간 */}
+                <span style={{fontSize : "20px", cursor:"pointer"}} onClick={() => navigate('/board')}> 🔄 무한로딩 게시판 </span>
             </div>
+
             <div className="nav-right">
                 {/* user 객체의 username 속성을 사용해 환영 메시지를 표시 */}
                 <span className="welcome-text">{user.username}님 환영합니다</span>

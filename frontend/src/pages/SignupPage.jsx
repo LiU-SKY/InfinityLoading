@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../api/axios';
-import './SignupPage.css';
 import '../App.css';
 
 

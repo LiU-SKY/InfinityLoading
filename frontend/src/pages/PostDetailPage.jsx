@@ -25,8 +25,8 @@ function PostDetailPage({ posts, user, onDelete }) {
     };
 
     return (
-        <div className="page-container">
-            {/* PostDetail 컴포넌트에 필��한 데이터와 함수를 props로 전달. */}
+        <div className="board-container">
+            {/* PostDetail 컴포넌트에 필요한 데이터와 함수를 props로 전달. */}
             <PostDetail
                 post={post}
                 user={user}
