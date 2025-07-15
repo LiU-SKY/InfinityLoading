@@ -135,7 +135,7 @@ code{
   padding: 40px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   width:80vw;
-  height:85vh;
+  min-height:85vh;
   margin-bottom: 20px;
 }
 
@@ -143,5 +143,5 @@ code{
   font-size: 2em;
   color: #ff4d4f;
   text-align: center;
-  margin-top: 0px;
+  margin-top: 0;
 }
