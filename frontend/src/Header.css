@@ -14,7 +14,7 @@
 .nav-left {
   flex-grow: 1;
 }
-.nav-right {
+.nav-right {;
   display: flex;
   align-items: center;
   gap: 15px;

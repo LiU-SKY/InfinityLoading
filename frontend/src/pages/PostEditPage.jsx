@@ -22,12 +22,10 @@ function PostEditPage({ posts, onEdit }) {
     };
 
     return (
-        <div className="page-container">
-            <div className="common-box">
-                <h2>게시글 수정</h2>
-                {/* PostForm 컴포넌트에 기존 게시글 데이터(post)를 전달하여 수정 모드로 사용. */}
-                <PostForm post={post} onSubmit={handleSubmit} />
-            </div>
+        <div className="board-container">
+            <h2>게시글 수정</h2>
+            {/* PostForm 컴포넌트에 기존 게시글 데이터(post)를 전달하여 수정 모드로 사용. */}
+            <PostForm post={post} onSubmit={handleSubmit} />
         </div>
     );
 }
