@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../api/axios';
 import '../App.css';
+import './SignupPage.css';
 
 
 // 회원가입 페이지 컴포넌트.
@@ -11,16 +12,17 @@ function SignupPage() {
     const [passchek, setPasschek] = useState('');
     const navigate = useNavigate();
 
-    const isMatch = password === passchek;
-    const textStyle = {
-        color: isMatch ? 'green' : 'red',
-        borderColor: password !== "" && isMatch ? 'green' : 'red',
-    };
+    const isMatch = password && passchek && password === passchek;
+    const passwordClassName = `password-input ${password && passchek ? (isMatch ? 'match' : 'mismatch') : ''}`;
+
 
     // '가입하기' 버튼 클릭 시 실행되는 함수.
     const handleSignup = async () => {
         if (!username.trim() || !password.trim()) {
             return alert('이름과 비밀번호를 모두 입력하세요');
+        }
+        if (!isMatch) {
+            return alert('비밀번호가 일치하지 않습니다.');
         }
         try {
             // 서버에 회원가입 요청을 보냄.
@@ -48,7 +50,7 @@ function SignupPage() {
                     type="password"
                     placeholder="비밀번호"
                     value={password}
-                    style={textStyle}
+                    className={passwordClassName}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <input
@@ -56,11 +58,11 @@ function SignupPage() {
                     placeholder="비밀번호 재입력"
                     value={passchek}
                     onChange={(e) => setPasschek(e.target.value)}
-                    style={textStyle}
+                    className={passwordClassName}
                 />
                 <div className = "button-box">
-                    <button onClick={handleSignup} style={{ flex: 1 }}>가입하기</button>
-                    <button onClick={() => navigate('/login')} style={{ flex: 1 }}>로그인으로</button>
+                    <button onClick={handleSignup} className="flex-button">가입하기</button>
+                    <button onClick={() => navigate('/login')} className="flex-button">로그인으로</button>
                 </div>
 
             </div>
