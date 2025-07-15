@@ -6,6 +6,7 @@ import com.onezero.infinityloading.backend.repository.PostRepository;
 import com.onezero.infinityloading.backend.repository.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,10 +33,14 @@ public class PostService {
 
     public List<Post> findAll() { return postRepository.findAll(); }
 
+    @Transactional
     public Post findById(Long id) {
-        return postRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("해당 게시글 없음"));
+        Post post = postRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("해당 게시글 없음"));
+        post.increaseViewCount(); // 조회수 증가
+        return post;
     }
 
+    @Transactional
     public Post update(Long id, Post newPost, String username) {
         Post post = findById(id);
         User user = userRepository.findByUsername(username)
