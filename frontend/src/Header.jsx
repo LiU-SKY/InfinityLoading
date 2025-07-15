@@ -13,7 +13,7 @@ function Header({ user, onLogout }) {
         <header className="header">
             <div className="nav-left">
                 {/* 로고나 다른 메뉴 등을 위한 왼쪽 공간 */}
-                <span style={{fontSize : "20px", cursor:"pointer"}} onClick={() => navigate('/board')}> 🔄 무한로딩 게시판 </span>
+                <span className="board-title" onClick={() => navigate('/board')}> 🔄 무한로딩 게시판 </span>
             </div>
 
             <div className="nav-right">

@@ -14,7 +14,10 @@ function PostList({ posts, onSelect }) {
             {posts.map((post) => (
                 <li key={post.id} onClick={() => onSelect(post)} className="post-list-item">
                     <span className="post-title">{post.title}</span>
-                    <span className="post-writer">{post.writer}</span>
+                    <div className="post-meta">
+                        <span className="post-writer">{post.writer}</span>
+                        <span className="post-views">조회수: {post.views}</span>
+                    </div>
                 </li>
             ))}
         </ul>

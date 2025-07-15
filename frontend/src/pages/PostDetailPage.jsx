@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PostDetail from '../components/PostDetail';
+import apiClient from '../api/axios';
 import './PostDetailPage.css';
 
 // 게시글 상세 보기 페이지.
-function PostDetailPage({ posts, user, onDelete }) {
+function PostDetailPage({ user, onDelete }) {
     // URL 파라미터에서 게시글의 id를 가져옴.
     const { id } = useParams();
     const navigate = useNavigate();
+    const [post, setPost] = useState(null);
 
-    // 전체 게시글 목록(posts)에서 해당 id를 가진 게시글을 찾음.
-    const post = posts.find(p => p.id === Number(id));
+    useEffect(() => {
+        const fetchPost = async () => {
+            try {
+                const response = await apiClient.get(`/post/${id}`);
+                setPost(response.data);
+            } catch (error) {
+                console.error("게시글을 불러오는데 실패했습니다.", error);
+                alert("게시글을 찾을 수 없습니다.");
+                navigate('/board');
+            }
+        };
+        fetchPost();
+    }, [id, navigate]);
+
 
     // 게시글이 없으면 메시지를 표시.
-    if (!post) return <div className="page-container">글을 찾을 수 없습니다.</div>;
+    if (!post) return <div className="page-container">글을 불러오는 중...</div>;
 
     // 삭제 버튼 클릭 시 실행되는 함수.
     const handleDelete = () => {

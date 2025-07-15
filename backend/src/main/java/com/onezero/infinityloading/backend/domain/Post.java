@@ -13,7 +13,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @NoArgsConstructor
-
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +30,18 @@ public class Post {
     @Column(nullable = false)
     private String writer;
 
+    @Column(nullable = false)
+    private int views = 0;
+
     public Post(String title, String content, String writer) {
+        this.title = title;
+        this.content = content;
+        this.writer = writer;
+        this.views = 0; // 생성 시 조회수 초기화
+    }
+
+    // 조회수 증가 메서드
+    public void increaseViewCount() {
+        this.views++;
     }
 }

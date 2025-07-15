@@ -84,7 +84,7 @@ function App() {
         try {
             await apiClient.post('/post', postData);
             // 새 글 추가 후, 전체 목록을 다시 불러와 화면을 갱신.
-            fetchPosts();
+            await fetchPosts();
         } catch (error) {
             console.error('게시글 추가에 실패했습니다:', error);
         }
@@ -94,7 +94,7 @@ function App() {
     const handleDeletePost = async (id) => {
         try {
             await apiClient.delete(`/post/${id}`);
-            fetchPosts();
+            await fetchPosts();
         } catch (error) {
             console.error('게시글 삭제에 실패했습니다:', error);
         }
@@ -104,7 +104,7 @@ function App() {
     const handleEditPost = async (id, postData) => {
         try {
             await apiClient.put(`/post/${id}`, postData);
-            fetchPosts();
+            await fetchPosts();
         } catch (error) {
             console.error('게시글 수정에 실패했습니다:', error);
         }
@@ -136,11 +136,11 @@ function App() {
                 />
                 <Route
                     path="/post/:id"
-                    element={user ? <PostDetailPage posts={posts} user={user} onDelete={handleDeletePost} /> : <Navigate to="/login" />}
+                    element={user ? <PostDetailPage user={user} onDelete={handleDeletePost} /> : <Navigate to="/login" />}
                 />
                 <Route
                     path="/edit/:id"
-                    element={user ? <PostEditPage posts={posts} onEdit={handleEditPost} /> : <Navigate to="/login" />}
+                    element={user ? <PostEditPage onEdit={handleEditPost} /> : <Navigate to="/login" />}
                 />
                 {/* 사용자가 로그인 상태이면 '/board'로, 아니면 '/login'으로 리디렉션 */}
                 <Route path="*" element={<Navigate to={user ? "/board" : "/login"} />} />
