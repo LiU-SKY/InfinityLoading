@@ -1,22 +1,24 @@
 import React from 'react';
-import MDEditor from '@uiw/react-md-editor';
 import '../pages/PostDetailPage.css';
 
 // 게시글의 상세 내용을 보여주는 컴포넌트.
 function PostDetail({ post, user, onBack, onDelete, onEdit }) {
-    // 현재 로그인한 사용자가 게시글의 작성자인지 확인.
-    const isAuthor = user && user.username === post.writer;
+    // 수정/삭제 권한이 있는지 확인 (작성자이거나 ADMIN).
+    const canModify = user && (user.username === post.writer || user.role === 'ADMIN');
 
     return(
-        <div className = "" data-color-mode="light" style={{display:"flex", flexDirection:"column", height:"100%"}}>
-            <h2>{post.title}</h2>
+        <div className="" style={{display:"flex", flexDirection:"column", height:"100%"}}>
+            <h2 id={"title"}>{post.title}</h2>
             <p className="post-writer" style={{alignSelf:"flex-end"}}>작성자: {post.writer}</p>
-            {/* MDEditor.Markdown을 사용해 마크다운 콘텐츠를 안전하게 렌더링. */}
-            <MDEditor.Markdown source={post.content} className="post-content" />
+            {/* Tiptap 콘텐츠(HTML)를 렌더링 */}
+            <div
+                className="post-content ProseMirror"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+            />
             <div className="post-actions"  style={{alignSelf: "flex-end", marginTop: "auto", gap:"10px", display:"flex"}}>
                 <button onClick={onBack}>목록으로</button>
-                {/* 작성자일 경우에만 '수정'과 '삭제' 버튼을 보여줌. */}
-                {isAuthor && (
+                {/* 수정/삭제 권한이 있을 경우에만 버튼을 보여줌. */}
+                {canModify && (
                     <>
                         <button onClick={onEdit}>수정</button>
                         <button onClick={onDelete} className="delete-button">삭제</button>

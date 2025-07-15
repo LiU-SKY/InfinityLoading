@@ -40,7 +40,7 @@ function App() {
             try {
                 // 토큰을 디코딩하여 사용자 정보를 추출.
                 const decoded = jwtDecode(token);
-                setUser({ username: decoded.sub });
+                setUser({ username: decoded.sub, role: decoded.role }); // role 추가
             } catch (error) {
                 console.error("Invalid token", error);
                 // 토큰이 유효하지 않으면 삭제.
@@ -65,8 +65,8 @@ function App() {
         localStorage.setItem('token', token);
         try {
             const decoded = jwtDecode(token);
-            // 토큰에서 추출한 사용자 이름으로 user 상태 업데이트.
-            setUser({ username: decoded.sub });
+            // 토큰에서 추출한 사용자 이름과 역할로 user 상태 업데이트.
+            setUser({ username: decoded.sub, role: decoded.role }); // role 추가
         } catch (error) {
             console.error("Invalid token", error);
         }

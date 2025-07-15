@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
-import MDEditor from '@uiw/react-md-editor';
+import TiptapEditor from './Editor'; // MDEditor 대신 TiptapEditor를 import
 import './PostForm.css';
 
 // 게시글 작성 및 수정을 위한 폼 컴포넌트.
 function PostForm({ post, onSubmit }) {
-    // 'post' prop이 있으면 수정 모드, 없으면 작성 모드.
-    // 수정 모드일 경우 기존 제목과 내용을 기본값으로 설정.
     const [title, setTitle] = useState(post?.title || '');
+    // content의 초기값도 post에서 가져옴
     const [content, setContent] = useState(post?.content || '');
 
     const handleSubmit = () => {
-        // 제목이나 내용이 비어있는지 확인.
-        if (!title.trim() || !content.trim()) {
+        // Tiptap은 빈 내용을 '<p></p>'로 표현하므로, 이를 확인
+        if (!title.trim() || !content.trim() || content === '<p></p>') {
             return alert('제목과 내용을 입력하세요');
         }
-        // 부모 컴포넌트로부터 받은 onSubmit 함수를 호출하여 데이터 전달.
-        // id는 서버에서 자동 생성되므로 여기서는 보내지 않음.
         onSubmit({
             title: title.trim(),
-            content: content, // trim() 제거, 마크다운 공백 보존
+            content: content,
         });
     };
 
     return (
-        <div className="post-form-container" data-color-mode="light">
+        <div className="post-form-container">
             <input
                 type="text"
                 placeholder="제목"
@@ -31,14 +28,13 @@ function PostForm({ post, onSubmit }) {
                 onChange={e => setTitle(e.target.value)}
                 className="post-form-input"
             />
-            <MDEditor
-                value={content}
+            {/* MDEditor를 TiptapEditor로 교체 */}
+            <TiptapEditor
+                content={content}
                 onChange={setContent}
-                height={400}
             />
 
             <div className="post-form-actions">
-                {/* 수정 모드 여부에 따라 버튼 텍스트를 다르게 표시. */}
                 <button onClick={handleSubmit}>{post ? '수정하기' : '작성하기'}</button>
             </div>
         </div>

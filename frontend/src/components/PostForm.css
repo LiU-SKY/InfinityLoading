@@ -1,10 +1,4 @@
-.post-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.post-form-container input[type="text"],
-.post-form textarea {
+.post-form-input {
     font-family: 'Noto Sans KR', sans-serif;
     box-sizing: border-box;
     width: 100%;
@@ -16,13 +10,9 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 30px;
 }
-.post-form input[type="text"]:focus,
-.post-form textarea:focus {
+
+.post-form-input:focus {
     border-color: #ff4d4f;
-}
-.post-form textarea {
-    resize: vertical;
-    min-height: 150px;
 }
 
 .post-form-actions {
@@ -32,7 +22,8 @@
     position: relative;
     bottom: 0;
 }
-.post-form button {
+
+.post-form-actions button {
     background-color: #ff4d4f;
     color: white;
     border: none;
@@ -41,6 +32,7 @@
     font-size: 1rem;
     transition: background-color 0.3s;
 }
-.post-form button:hover {
+
+.post-form-actions button:hover {
     background-color: #d9363e;
 }

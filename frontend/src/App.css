@@ -93,7 +93,7 @@ textarea:focus {
   font-size:20px;
   margin: 40px auto;
 }
-.common-box h2 {
+.common-box h2#title {
   font-size: 2em;
   color: #ff4d4f;
   margin-bottom: 30px;
@@ -103,4 +103,45 @@ textarea:focus {
   display: flex;
   gap: 10px;
   margin-top: 10px;
+}
+
+pre {
+  background-color: #414141;
+  color: #f8f8f2;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  position: relative;
+}
+
+pre code{
+  background-color: #414141;
+  color: #ffffff;
+  font-family: monospace; /*폰트 수정 필요 hack 같은 코딩 폰트로 적용할 것*/
+}
+
+code{
+  background-color: #414141;
+  color: #ff4d4f;
+  border-radius: 8px;
+  border:  2px solid #414141;
+  padding: 1px
+}
+
+.write-box{
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width:80vw;
+  height:85vh;
+  margin-bottom: 20px;
+}
+
+.write-box h2{
+  font-size: 2em;
+  color: #ff4d4f;
+  text-align: center;
+  margin-top: 0px;
 }

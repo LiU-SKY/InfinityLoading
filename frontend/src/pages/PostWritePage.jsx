@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PostForm from '../components/PostForm';
-import './PostWritePage.css';
 
 // 새 글 작성 페이지.
 function PostWritePage({ onAdd }) {

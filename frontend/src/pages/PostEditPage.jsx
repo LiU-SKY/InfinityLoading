@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PostForm from '../components/PostForm';
-import './PostEditPage.css';
 
 // 게시글 수정 페이지.
 function PostEditPage({ posts, onEdit }) {
@@ -22,7 +21,7 @@ function PostEditPage({ posts, onEdit }) {
     };
 
     return (
-        <div className="board-container">
+        <div className="write-box">
             <h2>게시글 수정</h2>
             {/* PostForm 컴포넌트에 기존 게시글 데이터(post)를 전달하여 수정 모드로 사용. */}
             <PostForm post={post} onSubmit={handleSubmit} />
