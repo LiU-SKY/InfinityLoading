@@ -37,7 +37,7 @@ function PostEditPage({ onEdit }) {
     return (
         <div className="page-container">
             <div className="write-box">
-                <h2>게시글 수정</h2>
+                <h2 id={"title"}>게시글 수정</h2>
                 {/* PostForm 컴포넌트에 기존 게시글 데이터(post)를 전달하여 수정 모드로 사용. */}
                 <PostForm post={post} onSubmit={handleSubmit} />
             </div>

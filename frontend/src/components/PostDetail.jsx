@@ -8,7 +8,7 @@ function PostDetail({ post, user, onBack, onDelete, onEdit }) {
 
     return(
         <div className="post-detail-container">
-            <h2 id={"title"}>{post.title}</h2>
+            <h1 id={"title"}>{post.title}</h1>
             <div className="post-meta-detail">
                 <span className="post-writer">작성자: {post.writer}</span>
                 <span className="post-views">조회수: {post.views}</span>

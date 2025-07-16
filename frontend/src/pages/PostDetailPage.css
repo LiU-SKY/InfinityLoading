@@ -1,24 +1,17 @@
 /* PostDetailPage.css */
-.detail-container {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+.post-detail-container {
     font-family: 'Noto Sans KR', sans-serif;
-    /* 이전의 width, max-width, min-height, height, margin 관련 속성은 모두 제거합니다. */
-    /* 이들은 이제 App.css의 .common-box에서 정의됩니다. */
-    padding: 30px;
     display: flex;
     flex-direction: column;
     text-align: left;
 }
-.detail-container h2#title{
+.post-detail-container h1#title{
     font-size: 28px;
-    color: #ff4d4f;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     border-bottom: 2px solid #f0f0f0;
+    margin: 0 0 10px;
 }
-.detail-container p {
+.post-detail-container p {
     font-size: 1.05rem;
     line-height: 1.8;
     color: #444;
@@ -26,6 +19,11 @@
     margin-top: 25px;
     flex-grow: 1;
 }
+
+.post-detail-container p:empty {
+    min-height: 1rem;
+}
+
 .detail-buttons {
     display: flex;
     justify-content: flex-end;
@@ -33,11 +31,7 @@
     margin-top: 30px;
 }
 
-.post-detail-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+
 
 .post-meta-detail {
     align-self: flex-end;

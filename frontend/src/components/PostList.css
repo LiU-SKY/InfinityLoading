@@ -20,6 +20,19 @@
     font-size: 1.1rem;
     color: #333;
     font-weight: 500;
+    text-align: left;
+    margin-left: 10px;
+    flex:1;
+}
+.post-id {
+    font-size: 0.9rem;
+    color: #727272;
+    align-self: flex-start;
+    margin-left: 0;
+    align-items: baseline;
+    border-right: 2px solid #f0f0f0;
+    padding-right: 5px;
+    min-width: 10%;
 }
 
 .post-meta {
@@ -32,10 +45,16 @@
 
 .post-writer {
     /* 개별 스타일이 필요하다면 여기에 추가 */
+
 }
 
 .post-views {
     /* 개별 스타일이 필요하다면 여기에 추가 */
+    align-self: flex-end;
+    min-width: 20%;
+    border-left: 2px solid #f0f0f0;
+    padding-left: 10px;
+    min-width: 100px;
 }
 
 .no-posts {

@@ -13,12 +13,14 @@ function BoardPage({ posts }) {
     };
 
     return (
-        <div className="board-container">
-            <div className="board-header">
-                <h1>게시판</h1>
+        <div className="page-container">
+            <div className="board-container">
+                <div className="board-header">
+                    <h1>게시판</h1>
+                </div>
+                {/* PostList 컴포넌트를 사용해 게시글 목록을 렌더링. */}
+                <PostList posts={posts} onSelect={handleSelectPost} />
             </div>
-            {/* PostList 컴포넌트를 사용해 게시글 목록을 렌더링. */}
-            <PostList posts={posts} onSelect={handleSelectPost} />
         </div>
     );
 }

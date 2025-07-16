@@ -13,6 +13,7 @@ function PostList({ posts, onSelect }) {
             {/* posts 배열을 순회하며 각 게시글을 <li> 항목으로 렌더링. */}
             {posts.map((post) => (
                 <li key={post.id} onClick={() => onSelect(post)} className="post-list-item">
+                    <span className="post-id">{post.id}</span>
                     <span className="post-title">{post.title}</span>
                     <div className="post-meta">
                         <span className="post-writer">{post.writer}</span>

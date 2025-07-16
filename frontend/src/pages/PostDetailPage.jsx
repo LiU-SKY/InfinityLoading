@@ -39,15 +39,17 @@ function PostDetailPage({ user, onDelete }) {
     };
 
     return (
-        <div className="board-container">
-            {/* PostDetail 컴포넌트에 필요한 데이터와 함수를 props로 전달. */}
-            <PostDetail
-                post={post}
-                user={user}
-                onBack={() => navigate('/board')}
-                onDelete={handleDelete}
-                onEdit={() => navigate(`/edit/${post.id}`)}
-            />
+        <div className="page-container">
+            <div className="board-container">
+                {/* PostDetail 컴포넌트에 필요한 데이터와 함수를 props로 전달. */}
+                <PostDetail
+                    post={post}
+                    user={user}
+                    onBack={() => navigate('/board')}
+                    onDelete={handleDelete}
+                    onEdit={() => navigate(`/edit/${post.id}`)}
+                />
+            </div>
         </div>
     );
 }

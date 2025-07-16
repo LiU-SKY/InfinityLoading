@@ -16,7 +16,7 @@ function PostWritePage({ onAdd }) {
     return (
         <div className="page-container">
             <div className="write-box">
-                <h2>새 글 작성</h2>
+                <h2 id={"title"}>새 글 작성</h2>
                 {/* PostForm 컴포넌트를 글 작성 모드로 사용. */}
                 <PostForm onSubmit={handleSubmit} />
             </div>
