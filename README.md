@@ -85,11 +85,11 @@ InfinityLoading/
 
 | 로그인 | 회원가입 |
 | --- | --- |
-| <img src="./asset/web/image/로그인 페이지.webp" width="400"/> | <img src="./asset/web/image/회원가입 페이지.webp" width="400"/> |
+| <img src="./asset/web/image/로그인 페이지.png" width="400"/> | <img src="./asset/web/image/회원가입 페이지.png" width="400"/> |
 | **게시물 목록** | **게시물 상세** |
-| <img src="./asset/web/image/게시물 목록 페이지.webp" width="400"/> | <img src="./asset/web/image/게시물 상세보기 페이지.webp" width="400"/> |
+| <img src="./asset/web/image/게시글 목록 페이지.png" width="400"/> | <img src="./asset/web/image/게시글 수정.png" width="400"/> |
 | **게시물 작성** | |
-| <img src="./asset/web/image/게시물 작성 페이지.webp" width="400"/> | |
+| <img src="./asset/web/image/새 글 작성.png" width="400"/> | |
 
 <br>
 

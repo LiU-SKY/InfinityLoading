@@ -111,7 +111,7 @@
 1.  `POST /post` 요청을 `PostController`의 `create` 메서드가 받습니다.
 2.  `JwtFilter`를 통해 `HttpServletRequest`에 저장된 사용자 이름(`username`)을 가져옵니다.
 3.  **마크다운 변환**: `PostService`의 `markdownToHtml` 메서드를 호출하여 본문 내용을 HTML로 변환합니다.
-4.  `PostService`의 `save` 메��드를 호출합니다. 이 때, `post` 객체와 `username`을 전달합니다.
+4.  `PostService`의 `save` 메서드를 호출합니다. 이 때, `post` 객체와 `username`을 전달합니다.
 5.  `save` 메서드는 `post` 객체에 작성자(`writer`)를 설정한 후, `postRepository.save(post)`를 통해 데이터베이스에 저장합니다.
 6.  저장된 `Post` 객체를 프론트엔드로 반환합니다.
 
